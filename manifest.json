@@ -1,0 +1,58 @@
+{
+    "manifest_version": 3,
+    "name": "Google Photos Vault",
+    "version": "1.0",
+    "description": "Secure your Google Photos with Password and Biometrics.",
+    "permissions": [
+        "storage",
+        "alarms"
+    ],
+    "host_permissions": [
+        "*://photos.google.com/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://photos.google.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_start",
+            "all_frames": true
+        }
+    ],
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": true
+    },
+    "action": {
+        "default_title": "Google Photos Vault Settings",
+        "default_popup": "options.html",
+        "default_icon": {
+            "16": "assets/icon.png",
+            "48": "assets/icon.png",
+            "128": "assets/icon.png"
+        }
+    },
+    "icons": {
+        "16": "assets/icon.png",
+        "48": "assets/icon.png",
+        "128": "assets/icon.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "assets/*",
+                "verify.html",
+                "verify.js"
+            ],
+            "matches": [
+                "*://photos.google.com/*"
+            ]
+        }
+    ]
+}

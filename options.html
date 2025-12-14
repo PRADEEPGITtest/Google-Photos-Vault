@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Photos Vault Settings</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #202124;
+            color: #e8eaed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 16px;
+            width: 400px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        h1 { margin-top: 0; font-weight: 400; font-size: 24px; margin-bottom: 24px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-size: 14px; color: #9aa0a6; }
+        input {
+            width: 100%;
+            padding: 10px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid #5f6368;
+            border-radius: 4px;
+            color: white;
+            box-sizing: border-box;
+        }
+        input:focus { outline: none; border-color: #8ab4f8; }
+        button {
+            background: #8ab4f8;
+            color: #202124;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover { background: #aecbfa; }
+        .status { margin-top: 16px; font-size: 13px; text-align: center; height: 20px; }
+        .success { color: #81c995; }
+        .error { color: #f28b82; }
+        
+        .section { margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 32px; }
+        .section:last-child { border-bottom: none; padding-bottom: 0; }
+        
+        .toggle-row { display: flex; justify-content: space-between; align-items: center; }
+        .toggle-label { font-size: 16px; color: #e8eaed; }
+        .desc { font-size: 12px; color: #9aa0a6; margin-top: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vault Settings</h1>
+        
+        <div class="section">
+            <div class="form-group">
+                <label>Set New Password</label>
+                <input type="password" id="new-password" placeholder="Enter new password">
+            </div>
+            <button id="save-password">Update Password</button>
+            <div id="pwd-status" class="status"></div>
+        </div>
+
+        <div class="section">
+            <div class="toggle-row">
+                <div>
+                    <div class="toggle-label">Biometric Unlock</div>
+                    <div class="desc">Use Windows Hello / Touch ID</div>
+                </div>
+                <!-- Simple status indicator implies enabled if registered -->
+                <button id="register-biometric" style="width: auto; padding: 6px 16px; font-size: 13px;">Setup</button>
+            </div>
+            <div id="bio-status" class="status"></div>
+        </div>
+        
+        <div class="section">
+             <div class="form-group">
+                <label>Auto-lock Timeout (minutes)</label>
+                <input type="number" id="timeout" value="15" min="1" max="60">
+            </div>
+             <button id="save-timeout">Save Timeout</button>
+             <div id="timeout-Status" class="status"></div>
+        </div>
+    </div>
+    <script src="options.js"></script>
+</body>
+</html>
